@@ -23,14 +23,12 @@ var Chart = React.createClass({
       width: this.props.width,
       height: this.props.height
     }, this.getChartState());
-    dispatcher.on('point:mouseover', this.showTooltip);
-    dispatcher.on('point:mouseout', this.hideTooltip);
     this.dispatcher = dispatcher;
   },
 
   componentDidUpdate: function(prevProps, prevState) {
-    var el = this.getDOMNode();
-    d3Chart.update(el, this.getChartState(), this.dispatcher);
+    // var el = this.getDOMNode();
+    // d3Chart._drawChart(el, this.dispatcher);
   },
 
   getChartState: function() {
@@ -51,29 +49,6 @@ var Chart = React.createClass({
     return (
       <div className="Chart"></div>
     );
-  },
-
-  showTooltip: function(d) {
-    if (this.props.appState.showingAllTooltips) {
-      return;
-    }
-
-    this.props.setAppState({
-      tooltip: d,
-      // Disable animation
-      prevDomain: null
-    });
-  },
-
-  hideTooltip: function() {
-    if (this.props.appState.showingAllTooltips) {
-      return;
-    }
-    
-    this.props.setAppState({
-      tooltip: null,
-      prevDomain: null
-    });
   }
 });
 

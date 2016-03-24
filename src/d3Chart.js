@@ -29,8 +29,8 @@ ns._tick = function () {
         .attr("x2", function(d) { return d.target.x; })
         .attr("y2", function(d) { return d.target.y; });
 
-    node.attr("transform", function(d) {
-        return "translate(" + d.x + "," + d.y + ")"; });
+  node.attr("transform", function(d) {
+      return "translate(" + d.x + "," + d.y + ")"; });
 }
 
 var force = d3.layout.force()
@@ -122,8 +122,7 @@ ns._color = function(d) {
 ns._drawChart = function(el, dispatcher) {
     var nodes = this._flatten(data);
     var links = d3.layout.tree().links(nodes);
-    var MinMaxNode = d3.extent(nodes, function(d) {
-        return d.size; });
+    var MinMaxNode = d3.extent(nodes, function(d) { return d.size; });
     var bubbleScale = d3.scale.linear().domain(MinMaxNode).range([20, 80]);
     var linkScale = d3.scale.linear().domain(MinMaxNode).range([80, 320]);
 
@@ -151,14 +150,10 @@ ns._drawChart = function(el, dispatcher) {
         .attr("class", function(d) {
             return d.source.name == "flare" ? "" : "link";
         })
-        .attr("x1", function(d) {
-            return d.source.x; })
-        .attr("y1", function(d) {
-            return d.source.y; })
-        .attr("x2", function(d) {
-            return d.target.x; })
-        .attr("y2", function(d) {
-            return d.target.y; });
+        .attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
 
     // Update the nodes…
     node = container.selectAll(".node").data(nodes, function(d) { return d.id; });
@@ -210,10 +205,5 @@ ns._drawChart = function(el, dispatcher) {
 
 };
 
-
-
-ns.destroy = function(el) {
-
-};
 
 module.exports = ns;

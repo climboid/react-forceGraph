@@ -1,10 +1,6 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var _ = require('lodash');
-
-var dataGenerator = require('./dataGenerator');
-
 
 var Chart = require('./Chart');
 
@@ -13,26 +9,9 @@ var Chart = require('./Chart');
 
 var App = React.createClass({
   getInitialState: function() {
-    var domain = [0, 30];
     return {
-      data: this.getData(domain),
-      domain: {x: domain, y: [0, 100]},
-      tooltip: null,
-      prevDomain: null,
-      showingAllTooltips: false
+      data: []
     };
-  },
-
-  _allData: dataGenerator.generate(10),
-
-  getData: function(domain) {
-    return _.filter(this._allData, this.isInDomain.bind(null, domain));
-  },
-
-  
-
-  isInDomain: function(domain, d) {
-    return d.x >= domain[0] && d.x <= domain[1];
   },
 
   render: function() {
