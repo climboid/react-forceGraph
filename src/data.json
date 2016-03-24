@@ -1,0 +1,39 @@
+{
+ "name": "flare",
+ "children": [
+  {
+    "fName": "Clark", 
+    "lName": "Kent",
+    "size": 60,
+    "type":"root",
+    "selected":true,
+    "children":[
+      {
+        "lName":"Alvarez",
+        "fName":"Holly",
+        "size":90,
+        "type":"root",
+        "selected":true,
+        "children":[
+          {"lName":"Sanders","fName":"George","size":40,"type":"leaf","selected":false},
+          {"lName":"Jones","fName":"Jessica","size":60,"type":"leaf","selected":false}
+        ]
+      },
+      {"lName":"Sanders","fName":"George","size":40,"type":"leaf","selected":false},
+      {"lName":"Jones","fName":"Jessica","size":60,"type":"leaf","selected":false},
+      {"lName":"Simon","fName":"Hugh","size":50,"type":"leaf","selected":false},
+      {"lName":"Frost","fName":"Emma","size":20,"type":"leaf","selected":false},
+      {"lName":"Stacy","fName":"Gwen","size":30,"type":"leaf","selected":false},
+      {"lName":"White","fName":"Walter","size":45,"type":"leaf","selected":false},
+      {"lName":"Worthy","fName":"Arthur","size":25,"type":"leaf","selected":false},
+      {"lName":"Parker","fName":"Peter","size":35,"type":"leaf","selected":false},
+      {"lName":"Alexander","fName":"Winston","size":45,"type":"leaf","selected":false},
+      {"lName":"Lauren","fName":"Sofia","size":22,"type":"leaf","selected":false},
+      {"lName":"White","fName":"Jacob","size":29,"type":"leaf","selected":false},
+      {"lName":"Smith","fName":"Lauryn","size":28,"type":"leaf","selected":false},
+      {"lName":"White","fName":"Jacob","size":29,"type":"leaf","selected":false},
+      {"lName":"Smith","fName":"Lauryn","size":28,"type":"leaf","selected":false}
+    ]
+  }
+ ]
+}

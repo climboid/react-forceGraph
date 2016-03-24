@@ -5,13 +5,13 @@ var _ = require('lodash');
 
 var d3Chart = require('./d3Chart');
 
-require('./Chart.less');
+// require('./Chart.less');
 
 var Chart = React.createClass({
   getDefaultProps: function() {
     return {
-      width: '100%',
-      height: '300px'
+      width: '800px',
+      height: '600px'
     };
   },
 
