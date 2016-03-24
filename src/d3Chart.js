@@ -37,13 +37,45 @@ var force = d3.layout.force()
     .size([800, 600])
     .on("tick", ns._tick);
 
+var zoom = d3.behavior.zoom()
+  .scaleExtent([0.5, 100])
+  .on("zoom", zoomed);
+
+var drag = d3.behavior.drag()
+    .origin(function(d) { return d; })
+    .on("dragstart", dragstarted)
+    .on("drag", dragged)
+    .on("dragend", dragended);
+
+function zoomed() {
+  container.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+  if(d3.event.scale > 3) {
+    console.log('scale', d3.event.scale);
+    update();
+  }
+}
+
+function dragstarted(d) {
+  d3.event.sourceEvent.stopPropagation();
+  d3.select(this).classed("dragging", true);
+}
+
+function dragged(d) {
+  d3.select(this).attr("cx", d.x = d3.event.x).attr("cy", d.y = d3.event.y);
+}
+
+function dragended(d) {
+  d3.select(this).classed("dragging", false);
+}
+
 
 
 ns.create = function(el, props, state) {
     var svg = d3.select(el).append('svg')
         .attr('class', 'd3')
         .attr('width', props.width)
-        .attr('height', props.height);
+        .attr('height', props.height)
+        .call(zoom);
 
     container = svg.append('g')
         .attr('class', 'd3-points');
