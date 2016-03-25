@@ -90,41 +90,38 @@ ns.create = function(el, props, state) {
 
 
 var data = {
-    "name": "flare",
-    "children": [{
-        "fName": "Clark",
-        "lName": "Kent",
-        "size": 60,
-        "type": "root",
-        "selected": true,
-        "children": [{
-                "lName": "Alvarez",
-                "fName": "Holly",
-                "size": 90,
-                "type": "root",
-                "selected": true,
-                "children": [
-                    { "lName": "Sanders", "fName": "George", "size": 40, "type": "leaf", "selected": false },
-                    { "lName": "Jones", "fName": "Jessica", "size": 60, "type": "leaf", "selected": false }
-                ]
-            },
-            { "lName": "Sanders", "fName": "George", "size": 40, "type": "leaf", "selected": false },
-            { "lName": "Jones", "fName": "Jessica", "size": 60, "type": "leaf", "selected": false },
-            { "lName": "Simon", "fName": "Hugh", "size": 50, "type": "leaf", "selected": false },
-            { "lName": "Frost", "fName": "Emma", "size": 20, "type": "leaf", "selected": false },
-            { "lName": "Stacy", "fName": "Gwen", "size": 30, "type": "leaf", "selected": false },
-            { "lName": "White", "fName": "Walter", "size": 45, "type": "leaf", "selected": false },
-            { "lName": "Worthy", "fName": "Arthur", "size": 25, "type": "leaf", "selected": false },
-            { "lName": "Parker", "fName": "Peter", "size": 35, "type": "leaf", "selected": false },
-            { "lName": "Alexander", "fName": "Winston", "size": 45, "type": "leaf", "selected": false },
-            { "lName": "Lauren", "fName": "Sofia", "size": 22, "type": "leaf", "selected": false },
-            { "lName": "White", "fName": "Jacob", "size": 29, "type": "leaf", "selected": false },
-            { "lName": "Smith", "fName": "Lauryn", "size": 28, "type": "leaf", "selected": false },
-            { "lName": "White", "fName": "Jacob", "size": 29, "type": "leaf", "selected": false },
-            { "lName": "Smith", "fName": "Lauryn", "size": 28, "type": "leaf", "selected": false }
+    "fmno":78231,
+    "first_name": "Clark",
+    "last_name": "Kent",
+    "size": 60,
+    "children": [
+      {
+        "fmno":78232,
+        "last_name": "",
+        "first_name": "Telnor",
+        "size": 90,
+        "children": [
+          { "last_name": "Sanders", "first_name": "George", "size": 40, "fmno":78233 },
+          { "last_name": "Jones", "first_name": "Jessica", "size": 60, "fmno":78234 },
+          { "last_name": "Frost", "first_name": "Emma", "size": 20, "fmno":78238 },
+          { "last_name": "Stacy", "first_name": "Gwen", "size": 30, "fmno":78239 },
+          { "last_name": "White", "first_name": "Walter", "size": 45, "fmno":78240 },
+          { "last_name": "Worthy", "first_name": "Arthur", "size": 25, "fmno":78250 },
+          { "last_name": "Parker", "first_name": "Peter", "size": 35, "fmno":78251 },
+          { "last_name": "Alexander", "first_name": "Winston", "size": 45, "fmno":78252 },
+          { "last_name": "Lauren", "first_name": "Sofia", "size": 22, "fmno":78253 },
+          { "last_name": "White", "first_name": "Jacob", "size": 29, "fmno":78254 },
+          { "last_name": "Smith", "first_name": "Lauryn", "size": 28, "fmno":78255 },
+          { "last_name": "White", "first_name": "Jacob", "size": 29, "fmno":78256 },
+          { "last_name": "Smith", "first_name": "Lauryn", "size": 28, "fmno":78257 }
         ]
-    }]
+      },
+      { "last_name": "", "first_name": "Scandinavia", "size": 40, "fmno":78235 },
+      { "last_name": "", "first_name": "Ericsson", "size": 60, "fmno":78236 },
+      { "last_name": "Consulting", "first_name": "NJ", "size": 50, "fmno":78237 }
+    ]
 };
+
 
 ns._flatten = function(root) {
   var nodes = [],
@@ -144,8 +141,6 @@ ns._flatten = function(root) {
 ns._color = function(d) {
   if (d.children || d._children) {
       return "root";
-  } else if (d.selected) {
-      return "leaf active";
   } else {
       return "leaf";
   }
@@ -216,14 +211,14 @@ ns._drawChart = function(el, dispatcher) {
             return val > 10 ? val : 10;
         })
         .text(function(d) {
-            return d.name !== 'flare' ? d.fName : '';
+            return d.name !== 'flare' ? d.first_name : '';
         })
         .on("click", ns._click);
 
     g.append("text")
         .attr("text-anchor", "start")
         .text(function(d) {
-            return d.name !== 'flare' ? d.lName : '';
+            return d.name !== 'flare' ? d.last_name : '';
         })
         .attr("dx", "-1.5em")
         .attr("dy", function(d) {
