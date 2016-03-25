@@ -10,8 +10,8 @@ var d3Chart = require('./d3Chart');
 var Chart = React.createClass({
   getDefaultProps: function() {
     return {
-      width: '800px',
-      height: '600px'
+      width: '1024px',
+      height: '628px'
     };
   },
 
