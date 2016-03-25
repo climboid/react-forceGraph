@@ -75,7 +75,8 @@ ns.create = function(el, props, state) {
         .attr('class', 'd3')
         .attr('width', props.width)
         .attr('height', props.height)
-        .call(zoom);
+        .call(zoom)
+        .on("dblclick.zoom", null);
 
     container = svg.append('g')
         .attr('class', 'd3-points');
